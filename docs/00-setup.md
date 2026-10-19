@@ -50,6 +50,19 @@ Instala además:
    gh repo create mi-workshop-copilot --private --source=. --push
    ```
    Se parte de un historial limpio (`rm -rf .git`) a propósito: un fork tendría los issues desactivados y los scripts del workshop los necesitan.
+
+   **Si tu repositorio va en GitHub Enterprise** (organización de empresa, GHE.com o GitHub Enterprise Server), autentícate contra ese host y crea el repo dentro de tu organización en lugar de tu cuenta personal:
+   ```bash
+   # Reemplaza HOST y ORG por los de tu empresa
+   gh auth login --hostname HOST
+   gh auth status --hostname HOST
+
+   # El repo ya clonado y con git init (pasos anteriores)
+   gh repo create HOST/ORG/mi-workshop-copilot \
+     --private --source=. --push
+   ```
+   Para github.com con Enterprise Cloud, omite `HOST/` y usa `ORG/mi-workshop-copilot`. Si la organización usa SSO, autoriza tu token para la organización (`gh auth refresh`, o Settings > Applications en GitHub). Confirma con tu admin que puedes crear repositorios privados en la organización y que la visibilidad `--private` está permitida (si no, usa `--internal`).
+   Verifica el remoto con `git remote -v`: debe apuntar a tu host y organización, no a `armandoblanco`.
 2. Verifica que la app funciona:
    ```bash
    cd app
@@ -61,7 +74,7 @@ Instala además:
    bash scripts/seed-issues.sh --dry-run
    bash scripts/seed-issues.sh
    ```
-4. Habilita **Actions** en el repositorio (necesario para el Módulo 3).
+4. Habilita **Actions** en el repositorio (necesario para el Módulo 3): en el repo, Settings > Actions > General > Actions permissions > *Allow all actions and reusable workflows* (o la opción que permita tu organización). En GitHub Enterprise, si la opción aparece bloqueada, la política la controla el admin de la organización o de la empresa.
 
 ## Verificación final (2 minutos)
 
@@ -80,4 +93,4 @@ Instala además:
 | No ves HydraFusion en el selector de modelos | Que el admin permita previews, y la configuración de HydraFusion en la app o en VS Code (`chat.copilot.hydraFusion.enabled`) |
 | `copilot` no existe tras instalar | Reabre la terminal; confirma que el directorio global de npm esté en tu PATH |
 | `gh aw` no existe | `gh extension list`; reinstala la extensión |
-| Los issues no se crean | `gh auth status` y que estés dentro del repo ya subido |
+| Los issues no se crean | `gh auth status` y que estés dentro del repo ya subido; en Enterprise, que la sesión sea contra tu host (`gh auth login --hostname HOST`) |

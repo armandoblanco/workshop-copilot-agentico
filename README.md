@@ -91,8 +91,10 @@ La instalación completa y la verificación están en el [Módulo 0](docs/00-set
 ## Inicio rápido
 
 ```bash
-# 1. Sube este contenido a un repositorio tuyo
-git init && git add . && git commit -m "chore: workshop inicial"
+# 1. Clona el repo público y crea uno propio a partir de él
+git clone https://github.com/armandoblanco/workshop-copilot-agentico.git mi-workshop-copilot
+cd mi-workshop-copilot
+rm -rf .git && git init -b main && git add . && git commit -m "chore: workshop inicial"
 gh repo create mi-workshop-copilot --private --source=. --push
 
 # 2. Verifica la app de práctica

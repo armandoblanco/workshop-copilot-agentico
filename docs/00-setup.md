@@ -39,13 +39,17 @@ Instala además:
 
 ## Preparar tu repositorio de práctica
 
-1. Crea un repositorio **propio** en GitHub (privado está bien) y sube el contenido de este zip.
+1. Clona el repositorio público del workshop y crea con él un repositorio **propio** en GitHub (privado está bien). No trabajes directamente sobre el original: los agentes crearán ramas, PR e issues, y no tienes permisos de escritura sobre él.
    ```bash
-   git init
+   git clone https://github.com/armandoblanco/workshop-copilot-agentico.git mi-workshop-copilot
+   cd mi-workshop-copilot
+   rm -rf .git
+   git init -b main
    git add .
    git commit -m "chore: workshop inicial"
    gh repo create mi-workshop-copilot --private --source=. --push
    ```
+   Se parte de un historial limpio (`rm -rf .git`) a propósito: un fork tendría los issues desactivados y los scripts del workshop los necesitan.
 2. Verifica que la app funciona:
    ```bash
    cd app

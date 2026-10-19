@@ -47,7 +47,8 @@ La Copilot app es una aplicación de escritorio construida sobre Copilot CLI. Su
 **PROMPT (modo Plan):**
 
 ```
-Explícame la estructura de este repositorio: qué hace cada carpeta, cómo se ejecutan las pruebas y qué brechas conocidas tiene la app. No modifiques nada.
+Explícame la estructura de este repositorio: qué hace cada carpeta, cómo se
+ejecutan las pruebas y qué brechas conocidas tiene la app. No modifiques nada.
 ```
 
 **Observa:** el agente lee el repo, responde con contexto real y todavía no cambió ningún archivo.
@@ -70,7 +71,8 @@ Trabajaremos el **issue 01** (sobreventa de cupos).
 **PROMPT de seguimiento:**
 
 ```
-Ajusta el plan: agrega una prueba que llene el cupo del evento 1 y confirme el 409 en el intento siguiente. No cambies nada fuera de app/src y app/test.
+Ajusta el plan: agrega una prueba que llene el cupo del evento 1 y confirme el
+409 en el intento siguiente. No cambies nada fuera de app/src y app/test.
 ```
 
 5. Aprueba el plan y deja que ejecute.
@@ -110,7 +112,9 @@ Ahora lanza **tres sesiones a la vez**, una por issue:
 **PROMPT (en la sesión B, tras fusionar A):**
 
 ```
-La rama principal cambió porque se fusionó el PR de validación de email. Actualiza esta rama con main, resuelve los conflictos en app/src/server.js conservando ambos comportamientos y vuelve a ejecutar npm test.
+La rama principal cambió porque se fusionó el PR de validación de email.
+Actualiza esta rama con main, resuelve los conflictos en app/src/server.js
+conservando ambos comportamientos y vuelve a ejecutar npm test.
 ```
 
 > **Momento wow:** el paralelismo no elimina la integración. La disciplina de revisar y fusionar en orden sigue siendo tuya.
@@ -156,19 +160,25 @@ Un canvas es una superficie compartida entre tú y el agente. Se crea con `/crea
 **PROMPT 1, triage visual de issues:**
 
 ```
-/create-canvas Quiero triar los issues abiertos de este repositorio de forma rápida y visual. Muéstralos como tarjetas con su etiqueta y un resumen de una línea, y permite marcar cuáles pasan a una sesión de agente.
+/create-canvas Quiero triar los issues abiertos de este repositorio de forma
+rápida y visual. Muéstralos como tarjetas con su etiqueta y un resumen de una
+línea, y permite marcar cuáles pasan a una sesión de agente.
 ```
 
 **PROMPT 2, vista de sesiones y worktrees:**
 
 ```
-/create-canvas Visualiza todas mis sesiones activas de la Copilot app y sus worktrees asociados. Indica cuáles están activas y cuáles quedaron obsoletas, y permite limpiar las obsoletas.
+/create-canvas Visualiza todas mis sesiones activas de la Copilot app y sus
+worktrees asociados. Indica cuáles están activas y cuáles quedaron obsoletas, y
+permite limpiar las obsoletas.
 ```
 
 **PROMPT 3, canvas del dominio del workshop:**
 
 ```
-/create-canvas Un tablero de cupos para Contoso Eventos: una barra por evento con inscritos contra capacidad, leyendo de la API en http://localhost:3000. Resalta en rojo los eventos llenos.
+/create-canvas Un tablero de cupos para Contoso Eventos: una barra por evento
+con inscritos contra capacidad, leyendo de la API en http://localhost:3000.
+Resalta en rojo los eventos llenos.
 ```
 
 > **Momento wow:** el canvas no es una captura estática. Puedes pedirle cambios y el agente actúa sobre la misma superficie.
@@ -185,7 +195,8 @@ Las automations guardan una tarea y la ejecutan por horario o a demanda. Pueden 
 **PROMPT:**
 
 ```
-Identifica dónde se me están quedando seguimientos pendientes o dónde repito trabajo, y sugiere una lista corta de automations útiles para este repositorio.
+Identifica dónde se me están quedando seguimientos pendientes o dónde repito
+trabajo, y sugiere una lista corta de automations útiles para este repositorio.
 ```
 
 3. Crea esta automation de ejemplo:
@@ -212,7 +223,9 @@ Identifica dónde se me están quedando seguimientos pendientes o dónde repito 
 **PROMPT:**
 
 ```
-/fleet Revisa app/src/server.js desde tres ángulos en paralelo: validación de entradas, manejo de errores y legibilidad. Devuélveme un hallazgo priorizado por ángulo.
+/fleet Revisa app/src/server.js desde tres ángulos en paralelo: validación de
+entradas, manejo de errores y legibilidad. Devuélveme un hallazgo priorizado por
+ángulo.
 ```
 
 ## Ejemplo 8: Memoria de trabajo con /chronicle
@@ -254,7 +267,9 @@ Como la app está construida sobre Copilot CLI, el historial de sesiones se pued
 **PROMPT:**
 
 ```
-Implementa lo que pide este issue. Cuando termines, levanta la app, ábrela en el navegador integrado y confírmame con una captura que se ve el estado vacío y el evento lleno. Si no puedes verificarlo visualmente, dilo.
+Implementa lo que pide este issue. Cuando termines, levanta la app, ábrela en el
+navegador integrado y confírmame con una captura que se ve el estado vacío y el
+evento lleno. Si no puedes verificarlo visualmente, dilo.
 ```
 
 ## Extras rápidos

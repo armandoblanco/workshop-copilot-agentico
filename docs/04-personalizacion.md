@@ -73,7 +73,8 @@ Este repo trae tres agentes en `.github/agents/`:
 **PROMPT:**
 
 ```
-Revisa app/src/server.js y dime qué riesgos de seguridad ves. Si no hay ninguno relevante, dilo y enumera qué revisaste.
+Revisa app/src/server.js y dime qué riesgos de seguridad ves. Si no hay ninguno
+relevante, dilo y enumera qué revisaste.
 ```
 
 3. Pídele ahora algo que **no debería poder hacer**:
@@ -91,7 +92,9 @@ Corrige tú mismo el primer problema que encontraste.
 Selecciona `test-writer` y pide pruebas para el issue 01:
 
 ```
-Escribe pruebas para el caso de capacidad llena del issue "se pueden inscribir más personas que la capacidad". Las pruebas deben fallar hoy porque el bug existe. No arregles el bug.
+Escribe pruebas para el caso de capacidad llena del issue "se pueden inscribir
+más personas que la capacidad". Las pruebas deben fallar hoy porque el bug
+existe. No arregles el bug.
 ```
 
 > **Momento wow:** obtienes pruebas que **fallan por la razón correcta**. Es la mejor forma de verificar que un issue está bien entendido antes de implementarlo.
@@ -133,8 +136,10 @@ Si la sesión ya estaba abierta y editaste una skill, recárgala con `/skills re
 ### Probarlo sin Copilot (siempre funciona)
 
 ```bash
-echo '{"toolName":"bash","toolArgs":"{\"command\":\"git push origin main --force\"}"}' | node .github/hooks/scripts/guardrail.mjs
-echo '{"toolName":"bash","toolArgs":"{\"command\":\"npm test\"}"}' | node .github/hooks/scripts/guardrail.mjs
+echo '{"toolName":"bash","toolArgs":"{\"command\":\"git push origin main --force\"}"}' | \
+  node .github/hooks/scripts/guardrail.mjs
+echo '{"toolName":"bash","toolArgs":"{\"command\":\"npm test\"}"}' | \
+  node .github/hooks/scripts/guardrail.mjs
 ```
 
 Esperado: la primera responde `"permissionDecision":"deny"`, la segunda `"allow"`.
@@ -194,7 +199,9 @@ Los plugins agrupan agentes, skills, hooks y MCP en un paquete instalable, para 
 **PROMPT:**
 
 ```
-Empaqueta los agentes, las skills y los hooks de este repositorio como un plugin de Copilot CLI. Antes de crear nada, consulta la documentación "Creating a plugin for GitHub Copilot CLI" y dime la estructura exacta que vas a generar.
+Empaqueta los agentes, las skills y los hooks de este repositorio como un plugin
+de Copilot CLI. Antes de crear nada, consulta la documentación "Creating a
+plugin for GitHub Copilot CLI" y dime la estructura exacta que vas a generar.
 ```
 
 > No incluyo aquí la estructura del plugin porque cambia entre versiones. Pedirle al agente que consulte primero la documentación evita copiar un formato obsoleto.

@@ -39,7 +39,8 @@ El sandboxing local ejecuta lo que Copilot lanza (comandos, herramientas, servid
 ## Paso 5.1: Activarlo (2 min)
 
 ```bash
-copilot help sandbox          # explica cómo funciona en tu sistema y qué prerrequisitos detecta
+# explica cómo funciona en tu sistema y qué prerrequisitos detecta
+copilot help sandbox
 copilot --sandbox             # inicia una sesión con sandbox
 ```
 
@@ -52,11 +53,13 @@ Con el sandbox activo, pide cosas **inofensivas** que crucen el límite del proy
 **PROMPTS (uno a la vez):**
 
 ```
-Crea un archivo llamado prueba-sandbox.txt en mi carpeta de usuario (fuera de este repositorio) con el texto "hola".
+Crea un archivo llamado prueba-sandbox.txt en mi carpeta de usuario (fuera de
+este repositorio) con el texto "hola".
 ```
 
 ```
-Crea un archivo prueba-sandbox.txt dentro de este repositorio, en la carpeta app/, con el texto "hola".
+Crea un archivo prueba-sandbox.txt dentro de este repositorio, en la carpeta
+app/, con el texto "hola".
 ```
 
 ```
@@ -127,12 +130,18 @@ Show me the guidance for writing dynamic workflows.
 Crea un dynamic workflow llamado "listo-para-release" para este repositorio. Debe:
 
 1. Ejecutar las pruebas con npm test desde app/. Si fallan, detenerse e informar.
-2. En paralelo, lanzar dos agentes de revisión: uno de seguridad y otro de cobertura de pruebas, ambos de solo lectura, que devuelvan hallazgos estructurados (severidad, archivo, descripción).
-3. Un tercer agente que verifique cada hallazgo contra el código real y descarte los que no se sostengan.
-4. Pausarse y pedirme aprobación antes de continuar si queda algún hallazgo de severidad alta.
-5. Terminar con un reporte en Markdown: qué se verificó, qué se descartó y por qué, y qué queda pendiente.
+2. En paralelo, lanzar dos agentes de revisión: uno de seguridad y otro de
+   cobertura de pruebas, ambos de solo lectura, que devuelvan hallazgos
+   estructurados (severidad, archivo, descripción).
+3. Un tercer agente que verifique cada hallazgo contra el código real y descarte
+   los que no se sostengan.
+4. Pausarse y pedirme aprobación antes de continuar si queda algún hallazgo de
+   severidad alta.
+5. Terminar con un reporte en Markdown: qué se verificó, qué se descartó y por
+   qué, y qué queda pendiente.
 
-Antes de escribirlo, muéstrame el diseño de las etapas y confirma cómo vas a manejar los fallos de cada una.
+Antes de escribirlo, muéstrame el diseño de las etapas y confirma cómo vas a
+manejar los fallos de cada una.
 ```
 
 **Qué evaluar del diseño que propone:**
@@ -178,7 +187,8 @@ Copilot CLI y la app pueden operar aplicaciones de escritorio (public preview, m
 **PROMPT de demostración:**
 
 ```
-Abre la aplicación Calculadora, calcula 1234 por 56 y dime el resultado que ves en pantalla.
+Abre la aplicación Calculadora, calcula 1234 por 56 y dime el resultado que ves
+en pantalla.
 ```
 
 ---

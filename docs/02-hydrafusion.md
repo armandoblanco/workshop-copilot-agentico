@@ -89,7 +89,10 @@ Usa el **issue 02** (email inválido y duplicados), que tiene reglas claras y se
 **PROMPT (idéntico en las tres):**
 
 ```
-Implementa lo que pide el issue "Bug: se aceptan emails inválidos y duplicados en las inscripciones" en app/src/server.js, con sus pruebas en app/test/api.test.js. Sigue las instrucciones del repositorio. Al terminar ejecuta npm test y resume qué cambiaste.
+Implementa lo que pide el issue "Bug: se aceptan emails inválidos y duplicados
+en las inscripciones" en app/src/server.js, con sus pruebas en
+app/test/api.test.js. Sigue las instrucciones del repositorio. Al terminar
+ejecuta npm test y resume qué cambiaste.
 ```
 
 > **Truco para el tiempo en vivo:** una sola corrida puede tardar varios minutos. Lanza las **tres como tres sesiones paralelas de la app** (Módulo 1, ejemplo 3), cada una desde su propia rama, y revisa los resultados al final del bloque o del día.

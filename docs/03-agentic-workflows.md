@@ -53,7 +53,8 @@ Para dejar el repositorio listo, GitHub publica un asistente de instalación que
 **PROMPT:**
 
 ```
-Initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
+Initialize this repository for GitHub Agentic Workflows using
+https://raw.githubusercontent.com/github/gh-aw/main/install.md
 ```
 
 **Observa:** se crea una skill de despacho en `.github/skills/agentic-workflows/` que habilita crear workflows desde Copilot.
@@ -175,7 +176,9 @@ Los workflows también se escriben con ayuda del agente, que es la forma recomen
 **PROMPT en Copilot CLI:**
 
 ```
-/agentic-workflows Crea un workflow que cada día laborable genere un issue con el estado del repositorio: issues abiertos y cerrados en las últimas 24 horas, pull requests esperando revisión y un siguiente paso sugerido.
+/agentic-workflows Crea un workflow que cada día laborable genere un issue con
+el estado del repositorio: issues abiertos y cerrados en las últimas 24 horas,
+pull requests esperando revisión y un siguiente paso sugerido.
 ```
 
 Compara lo que generó con `examples/agentic-workflows/daily-status.md`. ¿Qué safe outputs eligió? ¿Dejó permisos más amplios de los necesarios?

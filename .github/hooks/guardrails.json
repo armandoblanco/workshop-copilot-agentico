@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "node .github/hooks/scripts/guardrail.mjs",
+        "powershell": "node .github/hooks/scripts/guardrail.mjs",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

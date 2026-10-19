@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contoso Eventos</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f6fb; color: #1b1f3b; }
+    header { background: #1a237e; color: #fff; padding: 1rem 1.5rem; }
+    main { max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; }
+    .evento { background: #fff; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .evento h2 { margin: 0 0 .25rem; font-size: 1.1rem; }
+    .meta { color: #5c6080; font-size: .9rem; }
+    form { display: flex; gap: .5rem; margin-top: .75rem; flex-wrap: wrap; }
+    input { padding: .4rem .6rem; border: 1px solid #c5c9e0; border-radius: 4px; }
+    button { padding: .4rem .9rem; background: #1a237e; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+    .mensaje { margin-top: .5rem; font-size: .9rem; }
+    .error { color: #b00020; }
+    .ok { color: #1b7f3b; }
+  </style>
+</head>
+<body>
+  <header><h1>Contoso Eventos</h1></header>
+  <main>
+    <div id="eventos">Cargando eventos...</div>
+  </main>
+
+  <script>
+    async function cargarEventos() {
+      const contenedor = document.getElementById('eventos');
+      try {
+        const respuesta = await fetch('/api/eventos');
+        const eventos = await respuesta.json();
+        contenedor.innerHTML = '';
+        for (const evento of eventos) {
+          const tarjeta = document.createElement('article');
+          tarjeta.className = 'evento';
+          tarjeta.innerHTML = `
+            <h2></h2>
+            <div class="meta"></div>
+            <form>
+              <input name="nombre" placeholder="Nombre" required>
+              <input name="email" placeholder="Email" required>
+              <button type="submit">Inscribirme</button>
+            </form>
+            <div class="mensaje"></div>`;
+          tarjeta.querySelector('h2').textContent = evento.nombre;
+          tarjeta.querySelector('.meta').textContent =
+            `${evento.fecha} · ${evento.lugar || 'Lugar por definir'} · Capacidad: ${evento.capacidad}`;
+          tarjeta.querySelector('form').addEventListener('submit', (e) => inscribir(e, evento.id, tarjeta));
+          contenedor.appendChild(tarjeta);
+        }
+      } catch {
+        contenedor.textContent = 'No se pudieron cargar los eventos. Intenta de nuevo.';
+      }
+    }
+
+    async function inscribir(evento, eventoId, tarjeta) {
+      evento.preventDefault();
+      const datos = Object.fromEntries(new FormData(evento.target));
+      const mensaje = tarjeta.querySelector('.mensaje');
+      const respuesta = await fetch(`/api/eventos/${eventoId}/inscripciones`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos),
+      });
+      const cuerpo = await respuesta.json();
+      mensaje.className = 'mensaje ' + (respuesta.ok ? 'ok' : 'error');
+      mensaje.textContent = respuesta.ok ? 'Inscripción registrada' : cuerpo.error;
+      if (respuesta.ok) evento.target.reset();
+    }
+
+    cargarEventos();
+  </script>
+</body>
+</html>

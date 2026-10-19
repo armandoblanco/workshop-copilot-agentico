@@ -1,0 +1,14 @@
+{
+  "name": "contoso-eventos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "API pequeña de eventos y registros, usada como app de práctica en el workshop de GitHub Copilot agéntico",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  }
+}

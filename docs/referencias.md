@@ -1,4 +1,4 @@
-# 📚 Referencias
+# Referencias
 
 Fuentes consultadas el 19 de octubre de 2026. Los productos de este workshop están en preview y cambian rápido, así que revisa la fecha de cada página.
 

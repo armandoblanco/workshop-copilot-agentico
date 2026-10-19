@@ -1,15 +1,15 @@
-# 🧪 Módulo 5: Dynamic workflows y agentes con límites (sandboxing)
+# Módulo 5: Dynamic workflows y agentes con límites (sandboxing)
 
 **Duración en vivo:** 20 minutos. Parte A (sandbox) 8 min, Parte B (dynamic workflows) 12 min.
 
-## 🎯 Objetivos
+## Objetivos
 
-- ✅ Entender el sandboxing local y qué sí y qué no protege
-- ✅ Crear y ejecutar un dynamic workflow con verificación y pausa humana
-- ✅ Distinguir dynamic workflows, agentic workflows y HydraFusion
-- ✅ Combinar ambos: orquestación autónoma **dentro de un límite**
+- Entender el sandboxing local y qué sí y qué no protege
+- Crear y ejecutar un dynamic workflow con verificación y pausa humana
+- Distinguir dynamic workflows, agentic workflows y HydraFusion
+- Combinar ambos: orquestación autónoma **dentro de un límite**
 
-## 🧠 Tres cosas que se confunden
+## Tres cosas que se confunden
 
 | | HydraFusion | Agentic workflows | Dynamic workflows |
 | --- | --- | --- | --- |
@@ -23,11 +23,11 @@
 
 # Parte A: Sandboxing local
 
-## 🧠 Qué es
+## Qué es
 
 El sandboxing local ejecuta lo que Copilot lanza (comandos, herramientas, servidores MCP y de lenguaje locales) con **acceso restringido** a archivos, red y credenciales, usando controles nativos del sistema operativo. Pasó a disponibilidad general el 7 de octubre de 2026 en la CLI, la app y las sesiones de VS Code con Agent Host, **sin costo adicional**.
 
-## ⚠️ Lo que hay que saber antes de confiar en él
+## Lo que hay que saber antes de confiar en él
 
 - **Está apagado por defecto.** Hay que activarlo, o que la organización lo exija con una política.
 - **La CLI y la app tienen configuraciones separadas.** Activarlo en una no lo activa en la otra.
@@ -36,7 +36,7 @@ El sandboxing local ejecuta lo que Copilot lanza (comandos, herramientas, servid
 - Requisitos de plataforma: macOS 15 o superior, Linux con las herramientas necesarias (bubblewrap) y Windows 11 reciente (la documentación pide builds y actualizaciones concretas de 25H2 o 26H1). Una versión anterior de la documentación decía "macOS y Linux" solamente: **confirma tu plataforma antes del taller**.
 - Los valores por defecto de red y credenciales **difieren entre CLI y app** según fuentes secundarias. No los asumas: léelos en tu versión con `copilot help sandbox`.
 
-## Paso 5.1: Activarlo ⭐ (2 min)
+## Paso 5.1: Activarlo (2 min)
 
 ```bash
 copilot help sandbox          # explica cómo funciona en tu sistema y qué prerrequisitos detecta
@@ -45,11 +45,11 @@ copilot --sandbox             # inicia una sesión con sandbox
 
 O dentro de una sesión: `/sandbox enable`. Para una sesión sin sandbox: `copilot --no-sandbox` (se rechaza si tu organización lo exige).
 
-## Paso 5.2: Probar los límites ⭐ (6 min)
+## Paso 5.2: Probar los límites (6 min)
 
 Con el sandbox activo, pide cosas **inofensivas** que crucen el límite del proyecto. Anota qué se permitió y qué se bloqueó en **tu** configuración.
 
-🤖 **PROMPTS (uno a la vez):**
+**PROMPTS (uno a la vez):**
 
 ```
 Crea un archivo llamado prueba-sandbox.txt en mi carpeta de usuario (fuera de este repositorio) con el texto "hola".
@@ -76,7 +76,7 @@ Ejecuta git status y dime en qué rama estoy.
 | Petición de red | | |
 | Comando git local | | |
 
-> 🌟 **Momento wow:** el valor está en **no depender de que el modelo se porte bien**. El límite lo impone el sistema operativo, no una instrucción.
+> **Momento wow:** el valor está en **no depender de que el modelo se porte bien**. El límite lo impone el sistema operativo, no una instrucción.
 
 Limpia al terminar: borra `prueba-sandbox.txt` de los dos lugares si se crearon.
 
@@ -98,14 +98,14 @@ copilot --cloud --experimental
 
 # Parte B: Dynamic workflows
 
-## 🧠 Qué son
+## Qué son
 
 Un dynamic workflow es una orquestación **definida en código** que puede ejecutar comandos y herramientas, dividir un objetivo en tareas paralelas, pasar resultados estructurados entre etapas, hacer que subagentes **verifiquen los hallazgos de otros** y pausarse para pedirte entrada. Se implementan como extensiones de Copilot.
 
 - **Public preview.** En la app están siempre disponibles. En la CLI actívalos con `--experimental` o `/experimental on`.
 - Por defecto, los workflows que Copilot crea **quedan en la sesión actual**. Para reutilizarlos y compartirlos se guardan como extensión y se distribuyen con un plugin.
 
-## Paso 5.3: Explorar ⭐ (2 min)
+## Paso 5.3: Explorar (2 min)
 
 En una sesión de la CLI (con `--experimental`) o en la app:
 
@@ -117,11 +117,11 @@ What dynamic workflows are available?
 Show me the guidance for writing dynamic workflows.
 ```
 
-> 📝 Esas dos frases en inglés vienen de la documentación oficial. Así descubres qué hay y qué reglas de escritura aplican a **tu versión**, en lugar de depender de mi texto.
+> Esas dos frases en inglés vienen de la documentación oficial. Así descubres qué hay y qué reglas de escritura aplican a **tu versión**, en lugar de depender de mi texto.
 
-## Paso 5.4: Crear un workflow de preparación de release ⭐ (6 min)
+## Paso 5.4: Crear un workflow de preparación de release (6 min)
 
-🤖 **PROMPT:**
+**PROMPT:**
 
 ```
 Crea un dynamic workflow llamado "listo-para-release" para este repositorio. Debe:
@@ -135,7 +135,7 @@ Crea un dynamic workflow llamado "listo-para-release" para este repositorio. Deb
 Antes de escribirlo, muéstrame el diseño de las etapas y confirma cómo vas a manejar los fallos de cada una.
 ```
 
-📝 **Qué evaluar del diseño que propone:**
+**Qué evaluar del diseño que propone:**
 
 | Pregunta | Qué buscas |
 | -------- | ---------- |
@@ -145,7 +145,7 @@ Antes de escribirlo, muéstrame el diseño de las etapas y confirma cómo vas a 
 | ¿La pausa humana es obligatoria con hallazgos altos? | Sí |
 | ¿Qué ocurre con los resultados nulos o a medias? | No se tratan como éxito |
 
-## Paso 5.5: Ejecutarlo ⭐ (3 min)
+## Paso 5.5: Ejecutarlo (3 min)
 
 En lenguaje natural:
 
@@ -161,9 +161,9 @@ copilot workflow run listo-para-release
 
 Observa el avance por etapas y la pausa para tu aprobación.
 
-> 🌟 **Momento wow:** el paralelismo y la verificación cruzada son **parte de la estructura**, no un favor que le pides al modelo en cada prompt.
+> **Momento wow:** el paralelismo y la verificación cruzada son **parte de la estructura**, no un favor que le pides al modelo en cada prompt.
 
-## Paso 5.6: Combinar con el sandbox ⭐ (1 min, para llevarse)
+## Paso 5.6: Combinar con el sandbox (1 min, para llevarse)
 
 Ejecuta el workflow de nuevo **con el sandbox activo** (`copilot --sandbox`). Es la combinación recomendada para dar más autonomía: **orquestación con pasos de verificación, dentro de un límite del sistema operativo**.
 
@@ -173,9 +173,9 @@ Ejecuta el workflow de nuevo **con el sandbox activo** (`copilot --sandbox`). Es
 
 Copilot CLI y la app pueden operar aplicaciones de escritorio (public preview, macOS y Windows).
 
-> ⚠️ **Úsalo solo con una aplicación inofensiva** (por ejemplo, una calculadora o un editor de notas vacío), sin sesiones iniciadas, sin datos personales en pantalla y nunca en una demo con credenciales visibles. Un agente que ve y controla tu pantalla es el caso de mayor riesgo de este workshop.
+> **Úsalo solo con una aplicación inofensiva** (por ejemplo, una calculadora o un editor de notas vacío), sin sesiones iniciadas, sin datos personales en pantalla y nunca en una demo con credenciales visibles. Un agente que ve y controla tu pantalla es el caso de mayor riesgo de este workshop.
 
-🤖 **PROMPT de demostración:**
+**PROMPT de demostración:**
 
 ```
 Abre la aplicación Calculadora, calcula 1234 por 56 y dime el resultado que ves en pantalla.
@@ -195,7 +195,7 @@ Abre la aplicación Calculadora, calcula 1234 por 56 y dime el resultado que ves
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 | Problema | Solución |
 | -------- | -------- |
@@ -206,7 +206,7 @@ Abre la aplicación Calculadora, calcula 1234 por 56 y dime el resultado que ves
 | El workflow desaparece al cerrar la sesión | Es lo esperado por defecto: queda ligado a la sesión. Pídele que lo guarde como extensión reutilizable |
 | `copilot workflow run` no encuentra el workflow | Confirma con "What dynamic workflows are available?" y que la extensión esté cargada |
 
-## ✅ Checklist del módulo
+## Checklist del módulo
 
 - [ ] Sandbox activado y hoja de observaciones completa
 - [ ] Un dynamic workflow creado con verificación cruzada y pausa humana

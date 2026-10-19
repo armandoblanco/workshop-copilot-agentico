@@ -1,4 +1,4 @@
-# 🚀 Workshop: GitHub Copilot Agéntico
+# Workshop: GitHub Copilot Agéntico
 
 ## De la Copilot app a los dynamic workflows, en 2 horas
 
@@ -9,20 +9,20 @@
 
 ---
 
-## 📋 Tabla de contenidos
+## Tabla de contenidos
 
-- [Introducción](#-introducción)
-- [Agenda](#-agenda)
-- [Módulos](#-módulos)
-- [Pre-requisitos](#️-pre-requisitos)
-- [Inicio rápido](#-inicio-rápido)
-- [Estructura del repositorio](#-estructura-del-repositorio)
-- [La app de práctica](#-la-app-de-práctica)
-- [Avisos importantes](#️-avisos-importantes)
+- [Introducción](#introducción)
+- [Agenda](#agenda)
+- [Módulos](#módulos)
+- [Pre-requisitos](#pre-requisitos)
+- [Inicio rápido](#inicio-rápido)
+- [Estructura del repositorio](#estructura-del-repositorio)
+- [La app de práctica](#la-app-de-práctica)
+- [Avisos importantes](#avisos-importantes)
 
 ---
 
-## 🎯 Introducción
+## Introducción
 
 Este workshop recorre **cinco capacidades agénticas** de GitHub Copilot sobre una misma app pequeña, **Contoso Eventos**. En cada módulo practicas con pasos copiables, ves qué observar y sales con una conclusión propia.
 
@@ -30,34 +30,34 @@ El hilo conductor es esta pregunta: **¿cuánta autonomía le das a un agente y 
 
 Al terminar sabrás:
 
-- ✅ Dirigir varios agentes en paralelo desde la Copilot app y revisar su trabajo antes de integrarlo
-- ✅ Medir HydraFusion con un experimento propio, en vez de creer un benchmark ajeno
-- ✅ Automatizar tareas del repositorio con Agentic Workflows y contener sus riesgos con *safe outputs*
-- ✅ Personalizar Copilot con instrucciones, agentes, skills, hooks y MCP
-- ✅ Crear dynamic workflows con verificación cruzada y ejecutarlos dentro de un sandbox
+- Dirigir varios agentes en paralelo desde la Copilot app y revisar su trabajo antes de integrarlo
+- Medir HydraFusion con un experimento propio, en vez de creer un benchmark ajeno
+- Automatizar tareas del repositorio con Agentic Workflows y contener sus riesgos con *safe outputs*
+- Personalizar Copilot con instrucciones, agentes, skills, hooks y MCP
+- Crear dynamic workflows con verificación cruzada y ejecutarlos dentro de un sandbox
 
-> 💡 La app es **intencionalmente simple**. El objetivo no es construir software robusto, es practicar cómo dirigir, controlar y evaluar agentes.
+> La app es **intencionalmente simple**. El objetivo no es construir software robusto, es practicar cómo dirigir, controlar y evaluar agentes.
 
 ---
 
-## 📅 Agenda
+## Agenda
 
 | Hora | Bloque | Contenido |
 | ---- | ------ | --------- |
 | 0:00 - 0:10 | Apertura | Verificación de setup y panorama |
 | 0:10 - 0:35 | Módulo 1 | Copilot app: sesiones paralelas y ejemplos |
 | 0:35 - 0:50 | Módulo 2 | HydraFusion: experimento A/B/C |
-| 0:50 - 0:55 | ☕ Descanso | |
+| 0:50 - 0:55 | Descanso | |
 | 0:55 - 1:15 | Módulo 3 | Agentic Workflows |
 | 1:15 - 1:35 | Módulo 4 | Agentes, skills, hooks y MCP |
 | 1:35 - 1:55 | Módulo 5 | Sandbox y dynamic workflows |
 | 1:55 - 2:00 | Cierre | Recap y siguientes pasos |
 
-> ⏱️ Es una agenda ajustada: cinco módulos en dos horas dejan poco margen. La [guía del instructor](docs/guia-del-instructor.md) propone recortes y una versión en dos sesiones. Cada módulo marca con ⭐ lo esencial y deja el resto como bonus.
+> Es una agenda ajustada: cinco módulos en dos horas dejan poco margen. La [guía del instructor](docs/guia-del-instructor.md) propone recortes y una versión en dos sesiones. Cada módulo marca con lo esencial y deja el resto como bonus.
 
 ---
 
-## 📚 Módulos
+## Módulos
 
 | # | Módulo | Qué practicas | Estado del producto |
 | - | ------ | ------------- | ------------------- |
@@ -72,7 +72,7 @@ Material de apoyo: [guía del instructor](docs/guia-del-instructor.md) y [refere
 
 ---
 
-## 🛠️ Pre-requisitos
+## Pre-requisitos
 
 | Requisito | Detalle |
 | --------- | ------- |
@@ -88,7 +88,7 @@ La instalación completa y la verificación están en el [Módulo 0](docs/00-set
 
 ---
 
-## ⚡ Inicio rápido
+## Inicio rápido
 
 ```bash
 # 1. Sube este contenido a un repositorio tuyo
@@ -108,7 +108,7 @@ node scripts/validate.mjs
 
 ---
 
-## 🗂️ Estructura del repositorio
+## Estructura del repositorio
 
 ```
 .
@@ -141,7 +141,7 @@ node scripts/validate.mjs
 
 ---
 
-## 🧪 La app de práctica
+## La app de práctica
 
 **Contoso Eventos** es una API de eventos e inscripciones con un frontend de una sola página. Sus 8 pruebas pasan, pero tiene **seis brechas intencionales**, cada una convertida en un issue:
 
@@ -158,19 +158,9 @@ Detalles en [`app/README.md`](app/README.md).
 
 ---
 
-## ⚠️ Avisos importantes
+## Avisos importantes
 
 - **Casi todo es preview.** HydraFusion es una *research preview*, Agentic Workflows y los dynamic workflows están en *public preview*, y varias funciones de la app son recientes. Los nombres, menús y comandos pueden cambiar. Los patrones duran más que las pantallas.
 - **Información verificada y no verificada.** Las afirmaciones se contrastaron con la documentación oficial de GitHub a fecha 19 de octubre de 2026. Lo que no pudo confirmarse está listado en la [guía del instructor](docs/guia-del-instructor.md#datos-no-verificados-compruébalos-antes-de-enseñarlos). Compruébalo antes de enseñarlo.
 - **Costos.** Los agentes consumen AI Credits, y los sandboxes y automations en la nube se facturan por uso. Usa repos de práctica y apaga lo programado al terminar.
 - **Seguridad.** Trabaja siempre con un repositorio de práctica, sin credenciales ni datos reales. Los hooks de este repo son una red de seguridad básica, no un control de seguridad completo.
-
----
-
-## 👥 Créditos
-
-Estructura didáctica inspirada en [workshop-githubcopilot-basico-net](https://github.com/armandoblanco/workshop-githubcopilot-basico-net). Escenario, app y contenido de este repositorio son independientes.
-
-**Licencia:** MIT.
-
-> 🎉 Si llegaste hasta aquí, ya no solo escribes prompts: diriges, limitas y evalúas agentes.

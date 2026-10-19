@@ -1,8 +1,8 @@
-# 🛠️ Módulo 0: Preparación (hacer ANTES del workshop)
+# Módulo 0: Preparación (hacer ANTES del workshop)
 
 **Duración en vivo:** 10 minutos de verificación. La instalación se hace antes.
 
-> ⚠️ Casi todo en este workshop está en preview o cambió hace pocas semanas. Verifica el estado de tu cuenta con 24 horas de anticipación, no 5 minutos antes.
+> Casi todo en este workshop está en preview o cambió hace pocas semanas. Verifica el estado de tu cuenta con 24 horas de anticipación, no 5 minutos antes.
 
 ## Checklist de cuenta y permisos
 
@@ -68,7 +68,7 @@ Instala además:
 | `gh aw --help` | Muestra la ayuda de la extensión |
 | `gh issue list` en el repo | Lista los 6 issues |
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 | Problema | Qué revisar |
 | -------- | ----------- |

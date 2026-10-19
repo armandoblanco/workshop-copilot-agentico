@@ -1,4 +1,4 @@
-# 🎓 Guía del instructor
+# Guía del instructor
 
 Notas para quien da el workshop. Los participantes no necesitan leer esto.
 

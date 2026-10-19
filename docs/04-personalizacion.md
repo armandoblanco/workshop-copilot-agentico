@@ -1,15 +1,15 @@
-# 🧩 Módulo 4: Personalización a escala, agentes, skills, hooks y MCP
+# Módulo 4: Personalización a escala, agentes, skills, hooks y MCP
 
 **Duración en vivo:** 20 minutos. Este repositorio ya trae las piezas construidas: tu trabajo es **usarlas, romperlas y entender cuándo cada una**.
 
-## 🎯 Objetivos
+## Objetivos
 
-- ✅ Distinguir instrucciones, agentes, skills, hooks y MCP, y saber cuál usar para qué
-- ✅ Invocar un agente personalizado y una skill con script incluido
-- ✅ Probar un hook que bloquea comandos peligrosos
-- ✅ Saber qué superficies soporta cada pieza
+- Distinguir instrucciones, agentes, skills, hooks y MCP, y saber cuál usar para qué
+- Invocar un agente personalizado y una skill con script incluido
+- Probar un hook que bloquea comandos peligrosos
+- Saber qué superficies soporta cada pieza
 
-## 🧠 Las capas de personalización
+## Las capas de personalización
 
 | Pieza | Dónde vive | Para qué | Cómo se activa |
 | ----- | ---------- | -------- | -------------- |
@@ -20,26 +20,26 @@
 | **MCP** | `mcp.json`, ajustes del repo o `mcp-servers` en un agente | Conexión a sistemas externos | Herramientas disponibles para el agente |
 | **Plugins** | Paquete instalable | Empaqueta agentes, skills, hooks y MCP para distribuirlos | Se instalan |
 
-> 💡 **Regla práctica:** si debe cumplirse **siempre y sin excepción**, no lo pongas en una instrucción (el modelo puede ignorarla). Ponlo en un **hook** o en un permiso. Las instrucciones guían, los hooks garantizan.
+> **Regla práctica:** si debe cumplirse **siempre y sin excepción**, no lo pongas en una instrucción (el modelo puede ignorarla). Ponlo en un **hook** o en un permiso. Las instrucciones guían, los hooks garantizan.
 
 ### Superficies soportadas (según la documentación consultada)
 
 | Pieza | Copilot CLI | Cloud agent | IDEs | App de escritorio |
 | ----- | ----------- | ----------- | ---- | ----------------- |
-| Agentes | ✓ | ✓ | Parcial | Verifica en tu versión |
-| Skills | ✓ | ✓ | Parcial | La app respeta tu configuración existente |
-| Hooks | ✓ | ✓ | No documentado | **No confirmado**. La referencia de hooks solo menciona CLI y cloud agent |
-| MCP | ✓ | ✓ | ✓ | ✓ |
+| Agentes | | | Parcial | Verifica en tu versión |
+| Skills | | | Parcial | La app respeta tu configuración existente |
+| Hooks | | | No documentado | **No confirmado**. La referencia de hooks solo menciona CLI y cloud agent |
+| MCP | | | | |
 
-> ⚠️ La app está construida sobre la CLI, pero **no encontré confirmación oficial de que los hooks corran en ella**. Pruébalo antes del workshop y ajusta esta tabla con tu resultado.
+> La app está construida sobre la CLI, pero **no encontré confirmación oficial de que los hooks corran en ella**. Pruébalo antes del workshop y ajusta esta tabla con tu resultado.
 
 ---
 
-## Paso 4.1: Instrucciones, comprobar que se aplican ⭐ (3 min)
+## Paso 4.1: Instrucciones, comprobar que se aplican (3 min)
 
 Abre una sesión (CLI o app) y pregunta:
 
-🤖 **PROMPT:**
+**PROMPT:**
 
 ```
 Sin leer nada más, ¿qué reglas del proyecto estás siguiendo y de dónde las sacaste?
@@ -51,11 +51,11 @@ Compara con `.github/copilot-instructions.md`. Luego pídele que mejore las inst
 /init
 ```
 
-> 📝 **Observa:** `/init` genera o mejora las instrucciones del repositorio. Revisa cada línea que agregue: instrucciones infladas empeoran las respuestas y consumen contexto en cada turno.
+> **Observa:** `/init` genera o mejora las instrucciones del repositorio. Revisa cada línea que agregue: instrucciones infladas empeoran las respuestas y consumen contexto en cada turno.
 
 ---
 
-## Paso 4.2: Un agente personalizado ⭐ (5 min)
+## Paso 4.2: Un agente personalizado (5 min)
 
 Este repo trae tres agentes en `.github/agents/`:
 
@@ -65,12 +65,12 @@ Este repo trae tres agentes en `.github/agents/`:
 | `security-reviewer` | Revisa seguridad | `tools: ["read", "search"]`: **solo lectura** |
 | `release-engineer` | Prepara notas de versión | Usa la skill `changelog` |
 
-📍 **Pasos**
+**Pasos**
 
 1. En la CLI o la app, selecciona el agente con `/agent`.
 2. Elige `security-reviewer` y pídele:
 
-🤖 **PROMPT:**
+**PROMPT:**
 
 ```
 Revisa app/src/server.js y dime qué riesgos de seguridad ves. Si no hay ninguno relevante, dilo y enumera qué revisaste.
@@ -82,9 +82,9 @@ Revisa app/src/server.js y dime qué riesgos de seguridad ves. Si no hay ninguno
 Corrige tú mismo el primer problema que encontraste.
 ```
 
-📝 **Observa:** al no tener herramientas de edición ni ejecución, debe negarse o proponer el cambio sin aplicarlo. Es **el principio de mínimo privilegio aplicado a un agente**.
+**Observa:** al no tener herramientas de edición ni ejecución, debe negarse o proponer el cambio sin aplicarlo. Es **el principio de mínimo privilegio aplicado a un agente**.
 
-> 📝 Los nombres de los alias de herramientas (`read`, `search`, `edit`, `execute`) vienen de la referencia de configuración de agentes. Si tu versión los nombra distinto, consulta *Custom agents configuration* en la documentación.
+> Los nombres de los alias de herramientas (`read`, `search`, `edit`, `execute`) vienen de la referencia de configuración de agentes. Si tu versión los nombra distinto, consulta *Custom agents configuration* en la documentación.
 
 ### Prueba cruzada
 
@@ -94,21 +94,21 @@ Selecciona `test-writer` y pide pruebas para el issue 01:
 Escribe pruebas para el caso de capacidad llena del issue "se pueden inscribir más personas que la capacidad". Las pruebas deben fallar hoy porque el bug existe. No arregles el bug.
 ```
 
-> 🌟 **Momento wow:** obtienes pruebas que **fallan por la razón correcta**. Es la mejor forma de verificar que un issue está bien entendido antes de implementarlo.
+> **Momento wow:** obtienes pruebas que **fallan por la razón correcta**. Es la mejor forma de verificar que un issue está bien entendido antes de implementarlo.
 
 ---
 
-## Paso 4.3: Una skill con script incluido ⭐ (4 min)
+## Paso 4.3: Una skill con script incluido (4 min)
 
 La skill `changelog` tiene un `SKILL.md` y un script en `.github/skills/changelog/scripts/draft.mjs`. Copilot decide cuándo cargarla leyendo su **descripción**.
 
-🤖 **PROMPT:**
+**PROMPT:**
 
 ```
 Prepárame las notas de versión de lo que ha cambiado en este repositorio.
 ```
 
-📝 **Observa:**
+**Observa:**
 
 - ¿Cargó la skill sin que la nombraras? Si no, la **descripción** no es lo bastante clara: ajústala y vuelve a probar.
 - ¿Ejecutó el script `draft.mjs`?
@@ -120,13 +120,13 @@ Ejecuta tú el script para ver su salida cruda:
 node .github/skills/changelog/scripts/draft.mjs --max 20
 ```
 
-> 💡 Las descripciones vagas hacen que Copilot no use la skill cuando debe. Cámbiala por una que diga **cuándo** usarla, no solo qué es.
+> Las descripciones vagas hacen que Copilot no use la skill cuando debe. Cámbiala por una que diga **cuándo** usarla, no solo qué es.
 
 Si la sesión ya estaba abierta y editaste una skill, recárgala con `/skills reload`.
 
 ---
 
-## Paso 4.4: Un hook que protege ⭐ (5 min)
+## Paso 4.4: Un hook que protege (5 min)
 
 `.github/hooks/guardrails.json` registra un hook `preToolUse` que ejecuta `.github/hooks/scripts/guardrail.mjs` antes de cada herramienta. El script inspecciona los argumentos y **deniega** patrones peligrosos (borrado recursivo en la raíz, `git push --force`, `DROP TABLE`, `curl | bash`, tokens de GitHub).
 
@@ -143,13 +143,13 @@ Esperado: la primera responde `"permissionDecision":"deny"`, la segunda `"allow"
 
 Usa un comando **inofensivo** que cumpla el patrón, no uno real:
 
-🤖 **PROMPT:**
+**PROMPT:**
 
 ```
 Ejecuta en la terminal este comando exactamente: echo "DROP TABLE usuarios"
 ```
 
-📝 **Qué esperar:** la herramienta debería ser denegada por el hook. Si **no** lo es, tienes un dato importante: tu superficie no ejecuta hooks, o la ruta del script no se resuelve desde tu directorio de trabajo.
+**Qué esperar:** la herramienta debería ser denegada por el hook. Si **no** lo es, tienes un dato importante: tu superficie no ejecuta hooks, o la ruta del script no se resuelve desde tu directorio de trabajo.
 
 ### Lo que debes decir en voz alta al grupo
 
@@ -177,7 +177,7 @@ mcp-servers:
 ---
 ```
 
-> ⚠️ Este bloque es una **plantilla**. La URL es ficticia: reemplázala por un servidor MCP real que tengas. Revisa la sintaxis exacta en *Custom agents configuration*, porque el esquema de `mcp-servers` cambia entre IDE y cloud agent.
+> Este bloque es una **plantilla**. La URL es ficticia: reemplázala por un servidor MCP real que tengas. Revisa la sintaxis exacta en *Custom agents configuration*, porque el esquema de `mcp-servers` cambia entre IDE y cloud agent.
 
 Buenas prácticas para el grupo:
 
@@ -191,17 +191,17 @@ Buenas prácticas para el grupo:
 
 Los plugins agrupan agentes, skills, hooks y MCP en un paquete instalable, para distribuirlos a un equipo u organización.
 
-🤖 **PROMPT:**
+**PROMPT:**
 
 ```
 Empaqueta los agentes, las skills y los hooks de este repositorio como un plugin de Copilot CLI. Antes de crear nada, consulta la documentación "Creating a plugin for GitHub Copilot CLI" y dime la estructura exacta que vas a generar.
 ```
 
-> 📝 No incluyo aquí la estructura del plugin porque cambia entre versiones. Pedirle al agente que consulte primero la documentación evita copiar un formato obsoleto.
+> No incluyo aquí la estructura del plugin porque cambia entre versiones. Pedirle al agente que consulte primero la documentación evita copiar un formato obsoleto.
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 | Problema | Solución |
 | -------- | -------- |
@@ -211,7 +211,7 @@ Empaqueta los agentes, las skills y los hooks de este repositorio como un plugin
 | El agente de solo lectura igual edita | Revisa el alias de herramientas en tu versión y que el agente esté realmente seleccionado |
 | Instrucciones ignoradas | Las instrucciones no son garantía. Pasa lo crítico a un hook o a un permiso |
 
-## ✅ Checklist del módulo
+## Checklist del módulo
 
 - [ ] Confirmaste que las instrucciones se aplican
 - [ ] Usaste `security-reviewer` y probaste su límite de solo lectura
